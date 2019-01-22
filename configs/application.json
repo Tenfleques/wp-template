@@ -1,0 +1,20 @@
+{
+    "name" : "markets",
+    "title" : "Infinite Web [market]",
+    "localTitle" : {
+        "en" : "Infinite Web [market]",
+        "ru" : "Инфинити веб [рынок]"
+    },
+    "contacts" : {
+        "en" : {
+
+        }
+        ,"ru" : {
+            
+        }
+    },
+    "description": {
+        "en" : "markets watch",
+        "ru" : "просмотрщик рынков"
+    }
+}

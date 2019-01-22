@@ -1,0 +1,39 @@
+function wideScreenNavItem(navItem){
+	/**
+	 * prepares the html for the navigation item respectve to wide screens
+	 */
+    html = '<li class="nav-item link-box" >';
+    html +='    <a class="nav-link text-right link-goto '+navItem.active+'" href="'+navItem.url+'" role="button" aria-expanded="false">';
+    for(lan in navItem.caption)
+        html +='        <span class = "hidden lang '+lan+'">'+navItem.caption[lan]+'</span> ';
+    html +='    </a>';
+    html +='</li>';
+    return html;
+}
+function smallScreenNavItem(navItem){
+	/**
+	 * prepares the html for the navigation item respectve to smaller screens
+	 */
+    html = '<a href="'+navItem.url+'" class="list-group-item list-group-item-action m-0 pl-1 text-dark border-0 link-goto bg-transparent '+navItem.active+'">';
+    for(lan in navItem.caption)
+        html +='        <span class = "hidden lang '+lan+'">'+navItem.caption[lan]+'</span> ';
+    html +='</a>';
+    return html;
+}
+function fillNavs(navData,func){
+    /** 
+	 * require json array of navigation items. 
+     * creates html of navigation items and populate the respective navigation areas
+     * 
+    */
+    var smallScreensNavs = "", //html for smaller screens 
+        wideScreenNavs = ""; //html for wider screens
+
+    for (var i in navData){
+        smallScreensNavs += smallScreenNavItem(navData[i]);
+        wideScreenNavs += wideScreenNavItem(navData[i]);
+    }
+    
+    $(".wide-screen-nav").html(wideScreenNavs).on("click", "a", func); //populates widescreen navigation
+    $(".small-screen-nav").html(smallScreensNavs).on("click", "a", func); //populates smallscreen navigation
+}
